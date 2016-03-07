@@ -65,5 +65,6 @@
 -(void)addCCMailId:(NSString*)ccMailId;
 -(void)assignMailSubject:(NSString*)subject;
 -(void)assignRecipientEmailId:(NSString*)toEmailId withCCId:(NSString*)ccId emailSubject:(NSString*)subject;
+@property (nonatomic,strong) UIButton *snapShotBtn;
 
 @end

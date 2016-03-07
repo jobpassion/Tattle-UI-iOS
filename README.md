@@ -10,8 +10,6 @@ writes paragraphs to explain a simple UI misalignment when they test.
 Tattle-UI solves this problem by providing a simple mechanism to get UI feedback
 from testers. 
 
-For Android version, please refer to https://github.com/npctech/Tattle-UI-Android
-
 ## What do you see on your app
 
 After integration, Tattle-UI library adds a floating button on every screen. 
@@ -48,11 +46,11 @@ self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 [[TattleControl sharedControl] enableTattleToWindow:self.window]; 
 ```
 
-### From CocoaPods
+### From Cocoapods
 * Podfile 
 ```ruby
 platform :ios, '6.0'
-pod 'Tattle-UI-iOS', '~> 1.0.2'
+pod 'Tattle-UI-iOS', '~> 1.0.1'
 ```
 * Enable Tattle-UI control by adding below line in "AppDelegate.m". `#import "TattleControl.h"`
 * Invoke `enableTattleToWindow:` method, after main window creation.
@@ -88,11 +86,11 @@ self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
 TattleControl.sharedControl().enableTattleToWindow(self.window)
 ```
 
-### From CocoaPods
+### From Cocoapods
 * Podfile 
 ```ruby
 platform :ios, '6.0'
-pod 'Tattle-UI-iOS', '~> 1.0.2'
+pod 'Tattle-UI-iOS', '~> 1.0.1'
 ```
 * Include following header files into `AppModule-Bridging-Header.h`
 ```ruby

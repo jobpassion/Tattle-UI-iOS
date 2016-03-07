@@ -192,7 +192,7 @@ typedef enum NSInteger MovableControlButtonId;
     
     dispatch_once(&predicate, ^{
         NSString *nibName = IS_IPAD ? @"MovableEditorViewiPad" : @"MovableEditorView";
-        sharedInstance = [[[NSBundle mainBundle] loadNibNamed:nibName owner:nil options:nil] lastObject];
+        sharedInstance = [[[NSBundle bundleForClass:[MovableEditorView class]] loadNibNamed:nibName owner:nil options:nil] lastObject];
         CGRect frame = [[UIScreen mainScreen] bounds];
         [sharedInstance setFrame:CGRectMake(frame.origin.x, frame.size.height/2, sharedInstance.frame.size.width, sharedInstance.frame.size.height)];
         [sharedInstance assignBackgroundColor:[UIColor blackColor]];//Default

@@ -58,7 +58,6 @@ NSInteger const kMailSuccess    = 1008;
 
 @interface TattleControl ()<MFMailComposeViewControllerDelegate>
 
-@property (nonatomic,strong) UIButton *snapShotBtn;
 @property (nonatomic, strong) UIWindow *window;
 @property (nonatomic,strong) UIImage *spotImage;
 @property (nonatomic,strong) UIColor *spotImageColor;
@@ -351,9 +350,9 @@ NSInteger const kMailSuccess    = 1008;
     if (!self.confirmationView)
     {
         if (IS_IPAD)
-            self.confirmationView = [[[NSBundle mainBundle] loadNibNamed:@"TPopupView" owner:nil options:nil] lastObject];
+            self.confirmationView = [[[NSBundle bundleForClass:[TattleControl class]] loadNibNamed:@"TPopupView" owner:nil options:nil] lastObject];
         else
-            self.confirmationView = [[[NSBundle mainBundle] loadNibNamed:@"TPopupView" owner:nil options:nil] firstObject];
+            self.confirmationView = [[[NSBundle bundleForClass:[TattleControl class]] loadNibNamed:@"TPopupView" owner:nil options:nil] firstObject];
         __weak typeof(self) weakSelf = self;
         self.confirmationView.okActionBlock = ^{
             TLog(@"Ok Button Tapped");
@@ -534,9 +533,14 @@ NSInteger const kMailSuccess    = 1008;
 #pragma mark send screen shot
 -(void)sendScreenShotAudioFiles
 {
-    if(![MFMailComposeViewController canSendMail])
-        return;
+//    if(![MFMailComposeViewController canSendMail])
+//        return;
     [self removeSnapShotView];
+    if ([[[UIApplication sharedApplication] delegate] respondsToSelector:@selector(onTattle)]) {
+        [[[UIApplication sharedApplication] delegate] performSelector:@selector(onTattle)];
+        return;
+    }
+
     MFMailComposeViewController *mailComposer = [[MFMailComposeViewController alloc]init];
     [mailComposer setMailComposeDelegate:self];
     NSMutableString *systemInfo = [NSMutableString string];
